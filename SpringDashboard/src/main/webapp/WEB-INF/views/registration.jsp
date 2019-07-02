@@ -47,6 +47,42 @@
 	type="text/javascript"></script>
 <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"
 	rel="stylesheet" type="text/css" />
+	
+	<script>  
+function validateform(){  
+var name=document.myform.name.value;
+var email=document.myform.email.value;
+var mobileNumber=document.myform.mobileNumber.value;
+var userName=document.myform.userName.value;
+var password=document.myform.password.value;
+var cnfrmPassword=document.myform.cnfrmPassword.value;
+var dob=document.myform.dob.value;
+var gender=document.myform.gender.value;
+/* var password=document.myform.password.value; */  
+  
+if (name==null || name==""){  
+  alert("Name can't be blank");  
+  return false;  
+}else if (name.length<3) {
+	alert("Name must be greter than or equal to 3 letters");
+	return false; 
+}else if (name.length>20) {
+	alert("Name should not be greater than 20 letters");
+	return false; 
+}else if (email==null || email=="") {
+	alert("Email can't be blank");
+	return false; 
+}else if (mobileNumber==null || mobileNumber=="") {
+	alert("Mobile Number can't be blank");
+	return false; 
+}
+
+else if(password.length<6){  
+  alert("Password must be at least 6 characters long.");  
+  return false;  
+  }  
+}  
+</script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
 <!--[if lt IE 9]>
@@ -81,7 +117,7 @@
 
 			</header>
 			<!--header end-->
-			<form:form class="login-form" action="signup" method="post">
+			<form:form class="login-form" action="signup" method="post" name="myform" onsubmit="return validateform()" >
 				<div class="login-wrap">
 					<h1 align="center"
 						style="font-style: oblique; font-weight: bold; font-family: sans-serif; color: #0B95BD; font-size: 40px;">Sign
@@ -97,7 +133,7 @@
 						</div>
 						
 					<div class="input-group">
-						<form:input path="email" class="form-control" placeholder="Email" autofocus="true" maxlength="40"/>
+						<form:input path="email" class="form-control" placeholder="Email" autofocus="true" maxlength="40" />
 					</div>
 					
 					<div class="input-group">
